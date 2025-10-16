@@ -17,41 +17,110 @@ const progressBar = document.getElementById('progress');
 // Quiz questions
 const quizQuestions = [
   {
-    question: "What is the capital of France?",
-        answers: ["London", "Paris", "Berlin", "Rome"],
-        correctAnswer: "Paris"
+     question: "What is the capital of France?",
+    choices: ["Paris", "London", "Berlin", "Madrid"],
+    correctAnswer: "Paris"
   },
   {
     question: "Which planet is known as the Red Planet?",
-    answers: ["Venus", "Mars", "Jupiter", "Saturn"],
+    choices: ["Venus", "Mars", "Jupiter", "Saturn"],
     correctAnswer: "Mars"
   },
   {
     question: "What is the largest ocean on Earth?",
-    answers: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    choices: ["Atlantic Ocean",
+      "Indian Ocean", 
+      "Arctic Ocean",
+      "Pacific Ocean",
+    ],
     correctAnswer: "Pacific Ocean"
   },
   {
     question: "Which of these is NOT a programming language?",
-    answers: ["Java", "Python", "Banana", "JavaScript"],
+    choices: [
+      "Java",
+      "Python",
+      "Banana",
+      "JavaScript",
+    ],
     correctAnswer: "Banana"
-    
   },
   {
     question: "What is the chemical symbol for gold?",
-    answers: [
-      { text: "Go", correct: false },
-      { text: "Gd", correct: false },
-      { text: "Au", correct: true },
-      { text: "Ag", correct: false },
+    choices: [
+      "Go",
+      "Gd",
+      "Au",
+      "Ag",
     ],
-  }, 
+    correctAnswer: "Au"
+  },
+  {
+    question: "What does CPU stand for?",
+    choices: [
+      "Control Processing Unit",
+      "Computer Personal Unit",
+      "Central Processing Unit",
+      "Centralized Power Unit",
+    ],
+    correctAnswer: "Central Processing Unit"
+  },
+  {
+    question: "Which of the following is an input device?",
+    choices: [
+      "Keyboard",
+      "Monitor",
+      "Printer",
+      "Speaker",
+    ],
+    correctAnswer: "Keyboard"
+  },
+  {
+    question: "What does “www” stand for in a website address?",
+    choices: [
+      "Web World Wide",
+      "World Wide Web",
+      "Web Wide World",
+      "Wide World Web",
+    ],
+    correctAnswer: "World Wide Web"
+  },
+  {
+    question: "Which storage device is faster?",
+    choices: [
+      "Hard Disk Drive",
+      "Solid State Drive",
+      "USB Flash Drive",
+      "CD-ROM",
+    ],
+    correctAnswer: "Solid State Drive"
+  },
+  {
+    question: "Which software is used to browse the internet?",
+    choices: [
+      "Word",
+      "Visual Studio Code",
+      "Git",
+      "Google Chrome",
+    ],
+    correctAnswer: "Google Chrome"
+  },
 ];
+// SHUFFLE ANSWERS AND FORMAT QUESTIONS //
 
-// QUIZ STATE VARS
-let currentQuestionIndex = 0;
-let score = 0;
-let answersDisabled = false;
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // swap
+  }
+  return array;
+}
+// Shuffle the order of questions //
+shuffleArray(quizQuestions);
+
+quizQuestions.forEach(q => {
+  q.choices = shuffleArray(q.choices);
+});
 
 totalQuestionsSpan.textContent = quizQuestions.length;
 maxScoreSpan.textContent = quizQuestions.length;
@@ -86,26 +155,20 @@ function showQuestion() {
     questionText.textContent = currentQuestion.question;
     // todo: explain this in a second
     answersContainer.innerHTML = '';
-    currentQuestion.answers.forEach(answer => {
+    currentQuestion.choices.forEach(choice => {
         const button = document.createElement('button')
-        button.textContent = answer.text
+        button.textContent = choice
         button.classList.add('answer-btn');
       
         // what is dataset?
-        button.dataset.correct = answer.correct;
+        button.dataset.correct = choice === currentQuestion.correctAnswer;
 
         button.addEventListener('click', selectAnswer);
         answersContainer.appendChild(button);
     });
 }    
 
-function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1)); // Generate a random index from 0 to i
-        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
-      }
-      return array;
-    }
+
 
 function selectAnswer(event) {
   if (answersDisabled) return;

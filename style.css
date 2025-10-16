@@ -6,7 +6,7 @@
 
 
 body {
-    background: #f5efe6;
+    background: #777C6D;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,13 +16,14 @@ body {
 }
 
 .container {
-    background-color: white;
-    border-radius: 1rem;
+    background-color: #EEEEEE;
+    border-radius: 2rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0, 0.7);
     width: 100%;
     max-width: 600px;
     overflow: hidden;
     position: relative;
+    
 
 
 }
@@ -37,7 +38,7 @@ body {
 }
 
 #start-screen h1 {
-    color: #e86a33;
+    color: #777C6D;
     margin-bottom: 20px;
     font-size: 2.5rem;
 }
@@ -46,6 +47,7 @@ body {
     margin-bottom: 30px;
     font-size: 1.1rem;
 }
+
 /* QUIZ SCREEN */
 .quiz-header{
     margin-bottom: 1rem;
@@ -67,6 +69,13 @@ body {
     margin-bottom: 10px;
 }
 
+.quiz-info p {
+    color: #333;
+    font-size: 1rem;
+}
+
+
+
 .answers-container {
     display: flex;
     flex-direction: column;
@@ -76,9 +85,9 @@ body {
 }
 
 .answer-btn {
-    background-color: #f8f0e5;
+    background-color: #B7B89F;
     color: #333;
-    border: 2px solid #eadbc8;
+    border: 2px solid #777C6D;
     border-radius:  10px;
     padding: 1rem;
     cursor: pointer;
@@ -87,9 +96,9 @@ body {
 }
 
 .answer-btn:hover {
-    background-color: #eadbc8;
-    border-color: #dac0ae;
-
+    background-color: #CBCBCB;
+    border-color: #EEEEEE;
+    
 }
 
 .answer-btn.correct {
@@ -97,6 +106,7 @@ body {
     border-color: #a3f0c4;
     color: #28a745;
 }
+
 .answer-btn.incorrect {
     background-color: #f8d7da;
     border-color: #f5c6cb;
@@ -105,7 +115,7 @@ body {
 
 .progress-bar {
     height: 10px;
-    background-color: #f8f0e5;
+    background-color: #c9c6c1;
     border-radius: 5px;
     overflow: hidden;
     margin-top: 20px;
@@ -113,7 +123,7 @@ body {
 
 .progress {
     height: 100%;
-    background-color: #e86a33;
+    background-color: #777C6D;
     width: 0%;
     transition: width 0.3s ease;
 }
@@ -121,7 +131,7 @@ body {
 /* RESULT SCREEN */
 
 #result-screen h1 {
-    color: #e86a33;
+    color: #777C6D;
     margin-bottom: 30px;
 
 }
@@ -142,11 +152,11 @@ body {
 #result-message {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #e86a33;
+    color: #0a0a0a;
 }
 
 button{
-    background-color: #e86a33;
+    background-color: #777C6D;
     color: white;
     border: none;
     border-radius: 10px;
@@ -157,7 +167,7 @@ button{
 }
 
 button:hover {
-    background-color: #d45b28;
+    background-color: #B7B89F;
     /* transform: scale(1.05); */
 }
 
